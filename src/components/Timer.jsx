@@ -6,8 +6,13 @@ export const Timer = () => {
   const { running, reset, tick } = useSelector((state) => state);
 
   useEffect(() => {
+    document.title = `⏳ Redux Timer ${seconds || ""}`;
+  }, [seconds]);
+
+  useEffect(() => {
     setSeconds(0);
   }, [reset]);
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (running) {
